@@ -26,9 +26,9 @@ mutation addBookMark($title: String!,$url: String!){
     }
 }`;
 export default function Index() {
+
   const [addBookMark] = useMutation(ADD_BOOKMARK);
   const { loading, error, data } = useQuery(GET_BOOKMARKS);
-
   return (
     <div className="container">
       <div className="col-sm-6 m-auto">
@@ -56,7 +56,7 @@ export default function Index() {
                   },
                   refetchQueries: [{ query: GET_BOOKMARKS }]
                 })
-                resetForm({})
+                resetForm({});
               }
               }
             >
@@ -76,7 +76,7 @@ export default function Index() {
                     <input type="text" id="standard-basic" name="title" className="form-control" onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.title} required />
-                    {errors.title && touched.title && errors.title}
+                    <p className="text-danger">{errors.title && touched.title && errors.title}</p>
                   </div>
 
                   <div className="form-group">
@@ -84,11 +84,13 @@ export default function Index() {
                     <input type="text" id="standard-basic" name="url" className="form-control" onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.url} />
-                    {errors.url && touched.url && errors.url}
+                    <p className="text-danger">{errors.url && touched.url && errors.url}</p>
                   </div>
 
                   <div className="form-group text-right mb-0">
-                    <button type="submit" className="btn btn-success">Submit</button>
+                    <button type="submit" className="btn btn-success">
+                    submit
+                    </button>
                   </div>
                 </form>
               )}
