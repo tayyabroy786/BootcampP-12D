@@ -2,7 +2,6 @@ import React from 'react'
 import style from "./BookMark.module.css"
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
-import Button from '@material-ui/core/Button';
 const DELETE_BOOKMARK = gql`
   mutation deleteBookMark($id: ID!){
       deleteBookMark(id: $id){
@@ -31,7 +30,7 @@ export const BookMark = (prop) => {
     <div className={style.content}>
       <div  key={prop.id}>
         <h3><b>Title: </b> {prop.title}</h3>
-        <p><b>URL : </b> <a href={`https://${prop.url}`}>https://{(prop.url)}</a></p>
+        <p><b>URL : </b> <a href={`https://${prop.url}`}>{(prop.url)}</a></p>
         <button type="submit" className="btn btn-danger"  onClick={() => handleDelete(prop.id)}>Delete</button>
       </div>
     </div>
